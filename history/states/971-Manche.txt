@@ -1,0 +1,32 @@
+state={
+	id=971
+	name="STATE_971"
+	manpower = 438500
+	resources={
+		steel=3
+	}
+	
+	state_category = city
+
+	history={
+		owner = FRA
+		victory_points = {
+			9434 10
+		}	
+    	buildings = {
+			infrastructure = 4
+			industrial_complex = 1
+			6449 = {
+				naval_base = 3
+				coastal_bunker = 1
+			}
+		}
+		add_core_of = FRA
+	}
+
+	provinces={
+		6449 9550
+	}
+
+	local_supplies=0.0 
+}
