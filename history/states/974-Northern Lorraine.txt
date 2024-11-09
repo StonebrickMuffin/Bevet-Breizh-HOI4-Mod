@@ -1,0 +1,46 @@
+
+state={
+	id=974
+	name="STATE_974" # Northern Lorraine
+	manpower = 696200
+	
+	state_category = city
+	resources={
+		steel=42 #was 100 # was: 236
+	}
+
+	history={
+		owner = FRA
+		victory_points = { 9559 10 }
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 1
+			3629 = {
+				bunker = 10
+
+			}
+			9559 = {
+				bunker = 10
+
+			}
+			11502 = {
+				bunker = 10
+
+			}
+			anti_air_building = 5
+		}
+		add_core_of = FRA
+		add_core_of = LOR
+		1939.1.1 = {
+			buildings = {
+				industrial_complex = 4
+			}
+		}
+	}
+
+	provinces={
+		3629 9559 11502 
+	}
+
+	local_supplies=14.0 
+}

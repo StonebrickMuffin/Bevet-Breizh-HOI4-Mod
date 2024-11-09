@@ -1,0 +1,28 @@
+
+state={
+	id=17
+	name="STATE_17" # Eastern Burgundy
+	manpower = 564500
+	
+	state_category = city
+
+	history={
+		owner = FRA
+		victory_points = {
+			9642 5 
+		}
+		buildings = {
+			infrastructure = 4
+			industrial_complex = 1
+			air_base = 5
+		}
+		add_core_of = FRA
+		add_core_of = BUR
+	}
+
+	provinces={
+		698 3646 3666 6698 9642 9658 
+	}
+
+	local_supplies=0.0 
+}
