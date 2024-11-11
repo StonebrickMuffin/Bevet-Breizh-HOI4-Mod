@@ -3,11 +3,14 @@ state={
 	id=970
 	name="STATE_970"
 	manpower = 659400
-	
+	resources={
+		steel=12
+	}
+
 	state_category = city
 
 	history={
-		owner = FRA
+		owner = BRI
 		victory_points = {
 			11465 15
 		}

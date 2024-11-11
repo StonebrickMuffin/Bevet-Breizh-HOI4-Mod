@@ -1,0 +1,24 @@
+peace_ai_desires = {
+
+    # If France capitulates a rebellion, annexs rebellion
+    FRA_wants_claim = {
+        peace_action_type = take_states
+        enable = {
+            tag = FRA  # Negotiatior is France
+            FROM = { tag = ROOT }  # And the negotiator is also taking for themselves
+            FROM.FROM.FROM = {is_claimed_by = FRA }  # Lost French Territory
+        }
+
+        ai_desire = 100  # 100 percent higher desire
+    }
+
+    FRA_no_liberate_claim = {
+        peace_action_type = { puppet force_government liberate }
+        enable = {
+            tag = FRA  # Negotiatior is France
+            FROM.FROM.FROM = { is_claimed_by = FRA }  # Lost French Territory
+        }
+
+        ai_desire = -100  # 100 percent lower desire
+    }
+}

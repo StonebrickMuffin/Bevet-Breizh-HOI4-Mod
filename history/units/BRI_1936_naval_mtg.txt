@@ -1,0 +1,71 @@
+
+units= {
+    fleet = {
+		name = "1añ flodad"
+		naval_base = 3552 # Brest
+		task_force = {
+			name = "1añ nerzh ar morlu"
+			location = 3552 # Brest	
+			ship = { name = "Cyclone" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = BRI version_name = "Bourrasque Class" } } }
+			ship = { name = "Siroco" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = BRI version_name = "Bourrasque Class" } } }	
+			ship = { name = "Mistral" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = BRI version_name = "Bourrasque Class" } } }	
+		}
+    }
+}
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+instant_effect = {
+
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_submarine_2
+			creator = "BRI" 
+			version_name = "Redoutable Class"
+		}
+		requested_factories = 2
+		progress = 0.20
+		amount = 3
+	}
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_cruiser_1
+			creator = "BRI" 
+			version_name = "La Galissonnière Class"
+		}
+		requested_factories = 1
+		progress = 0.35
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_cruiser_1
+			creator = "BRI" 
+			version_name = "La Galissonnière Class"
+		}
+		requested_factories = 1
+		progress = 0.15
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_cruiser_1
+			creator = "BRI" 
+			version_name = "La Galissonnière Class"
+		}
+		requested_factories = 1
+		progress = 0.15
+		amount = 1
+	}
+	add_equipment_production = {
+		equipment = {
+			type = ship_hull_cruiser_1
+			creator = "BRI" 
+			version_name = "La Galissonnière Class"
+		}
+		requested_factories = 1
+		progress = 0.15
+		amount = 1
+	}
+}

@@ -1,0 +1,164 @@
+﻿##### Division Templates #####
+division_template = {
+	name = "Rann troadegiezh"		
+	# Represents: Division d'Infanterie (Series A and B), Div. d'Inf. de Forteresse
+	# Difference is their equipment
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }
+		infantry = { x = 1 y = 1 }
+		infantry = { x = 1 y = 2 }
+		infantry = { x = 2 y = 0 }
+		infantry = { x = 2 y = 1 }
+		infantry = { x = 2 y = 2 }
+	}
+	support = {
+		artillery = { x = 0 y = 0 } 	# Heavy Arty Regiment had 2x 155mm battalions
+		engineer = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Milis Breizh"
+
+	regiments = { 
+		militia = { x = 0 y = 0 }
+		militia = { x = 0 y = 1 }
+		militia = { x = 1 y = 0 }
+		militia = { x = 1 y = 1 }
+		militia = { x = 2 y = 0 }
+		militia = { x = 2 y = 1 }
+	}
+}
+division_template = {
+	name = "Rann marc'hegerien" 	# Division de Cavalerie
+	# Note: Transformed to DLC, DLM divisions, 1936-39 
+	regiments = {
+		cavalry = { x = 0 y = 0 }
+		cavalry = { x = 0 y = 1 }
+		cavalry = { x = 1 y = 0 }
+		cavalry = { x = 1 y = 1 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }      # Recon Group consisted of 64 ACs/scout cars
+	}
+}
+
+##### OOB #####
+units = {
+	division= {	# "21ème Division d'Infanterie"
+		division_name = {
+			is_name_ordered = yes
+			name_order = 21
+		}
+		location = 11465
+		division_template = "Rann troadegiezh" 	# Frontline, best equipment
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.9
+	}
+
+	division= {
+		location = 503
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+
+	division= {
+		location = 527
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.2
+		start_equipment_factor = 0.8
+	}
+
+	division= {
+		location = 542
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+
+	division= {
+		location = 3552
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.9
+	}
+
+	division= {
+		location = 3552
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.3
+		start_equipment_factor = 0.9
+	}
+
+	division= {
+		location = 6536
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+	
+	division= {
+		location = 9495
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+
+	division= {
+		location = 9510
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+
+	division= {
+		location = 9525
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+
+	division= {
+		location = 11508
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.1
+		start_equipment_factor = 2
+	}
+
+	division= {
+		location = 11465
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.7
+	}
+
+	division= {
+		location = 11465
+		division_template = "Milis Breizh"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.7
+	}
+}
+
+#########################
+## STARTING PRODUCTION ##
+#########################
+
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_1
+			creator = "BRE"
+		}
+		requested_factories = 2
+		progress = 0.1
+		efficiency = 50
+	}
+	
+}
+
+###################

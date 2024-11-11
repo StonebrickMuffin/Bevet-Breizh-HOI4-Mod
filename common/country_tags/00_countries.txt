@@ -264,6 +264,7 @@ QUE = "countries/Quebec.txt"
 NOM = "countries/Normandy.txt"
 BUR = "countries/Burgundy.txt"
 LOR = "countries/Lorraine.txt"
+ALS = "countries/Alsace.txt"
 
 # WELSH ARGENTINA
 WLA = "countries/Welsh Argentina.txt"
