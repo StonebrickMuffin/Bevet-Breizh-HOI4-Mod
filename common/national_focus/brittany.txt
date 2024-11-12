@@ -1,0 +1,36 @@
+
+focus_tree = {
+	id = brittany_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = BRI
+		}
+	}
+	
+	default = no
+
+    focus = {
+		id = BRI_military_control
+		icon = GFX_goal_generic_political_pressure
+		x = -6
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+            promote_character = BRI_military_council
+			set_party_name = { 
+                ideology = neutrality 
+                long_name = BRI_military_long 
+                name = BRI_military 
+            }	
+		}
+		
+	}
+}

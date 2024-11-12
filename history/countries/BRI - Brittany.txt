@@ -125,6 +125,8 @@ set_convoys = 50
 set_stability = 0.5
 set_war_support = 0.9
 
+recruit_character = BRI_disorganised_rebels
+recruit_character = BRI_military_council
 recruit_character = BRI_fascist_guy
 recruit_character = BRI_coi
 recruit_character = BRI_acr
@@ -252,10 +254,9 @@ recruit_character = BRI_awt
 }
 set_politics = {
 	ruling_party = neutrality
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
+	elections_allowed = no
 }
+
 set_popularities = {
 	democratic = 20
 	fascism = 40
@@ -264,6 +265,7 @@ set_popularities = {
 }
 
 add_ideas = {
+	BRI_breton_nationalism
 	tot_economic_mobilisation
 	service_by_requirement
 	limited_exports
@@ -289,14 +291,6 @@ create_country_leader = {
 	expire = "1965.1.1"
 	ideology = nazism
 }
-
-create_country_leader = {
-	name = "Maurice Duhamel"
-	picture = GFX_portrait_Maurice_Duhamel
-	expire = "1965.1.1"
-	ideology = centrism
-}
-
 
 if = {
 	limit = { has_dlc = "Man the Guns" }
