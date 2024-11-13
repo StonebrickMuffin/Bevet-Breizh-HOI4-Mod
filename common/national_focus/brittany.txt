@@ -22,7 +22,7 @@ focus_tree = {
 		ai_will_do = {
 			factor = 1
 		}
-		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
             promote_character = BRI_military_council
 			set_party_name = { 
@@ -30,7 +30,608 @@ focus_tree = {
                 long_name = BRI_military_long 
                 name = BRI_military 
             }	
+		}		
+	}
+	focus = {
+		id = BRI_utilise_civilian_labour
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = BRI_military_control }
+		x = -4
+		y = 1
+		relative_position_id = BRI_military_control
+		cost = 5
+		ai_will_do = {
+			factor = 2
 		}
-		
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_civilian_labour
+   				days = 180
+			}
+
+            if = {
+				limit = {
+					controls_province = 11465
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11465
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 503
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = 503
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 527
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = 527
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11508
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = 11508
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9495
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9495
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9525
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 9525
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11616
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11616
+						instant_build = yes
+						}
+					}
+				}
+			}
+		}
+
+	focus = {
+		id = BRI_build_costal_defences
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = { focus = BRI_utilise_civilian_labour }
+		x = -1
+		y = 1
+		relative_position_id = BRI_utilise_civilian_labour
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			if = {
+				limit = {
+					controls_province = 3552
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 4
+						province = 3552
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 542
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 542
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 6536
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 6536
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9510
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 9510
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11465
+				}
+				970 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 4
+						province = 11465
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11616
+				}
+				970 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 11616
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 6572
+				}
+				973 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 1
+						province = 6572
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9525
+				}
+				973 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 1
+						province = 9525
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11508
+				}
+				973 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 1
+						province = 11508
+						instant_build = yes
+						}
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_fortress_brest
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = BRI_build_costal_defences }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_costal_defences
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			if = {
+				limit = {
+					controls_province = 3552
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 5
+						province = 3552
+						instant_build = yes
+						}
+				}
+				14 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						province = 3552
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 542
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 542
+						instant_build = yes
+						}
+				}
+				14 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 542
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 3758
+				}
+				14 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 3758
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 6572
+				}
+				973 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 6572
+						instant_build = yes
+						}
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 6572
+						instant_build = yes
+						}
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_frontline_defences
+		icon = GFX_goal_generic_construct_military
+		prerequisite = { focus = BRI_utilise_civilian_labour }
+		x = 1
+		y = 1
+		relative_position_id = BRI_utilise_civilian_labour
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			if = {
+				limit = {
+					controls_province = 11465
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11465
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 503
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 503
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 527
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 527
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11616
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 11616
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9495
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = 9495
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11508
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 2
+						province = 11508
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9525
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 9525
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9510
+				}
+				14 = {
+					add_building_construction = {
+						type = bunker
+						level = 1
+						province = 9510
+						instant_build = yes
+						}
+				}
+			}
+		}
+	}
+	focus = {
+		id = BRI_fortress_nantes
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = BRI_frontline_defences }
+		x = 0
+		y = 1
+		relative_position_id = BRI_frontline_defences
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			if = {
+				limit = {
+					controls_province = 11465
+				}
+				970 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 4
+						province = 11465
+						instant_build = yes
+						}
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 11465
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 11616
+				}
+				970 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 11616
+						instant_build = yes
+						}
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 4
+						province = 11616
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9510
+				}
+				14 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 3
+						province = 9510
+						instant_build = yes
+						}
+				}
+				14 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9510
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 503
+				}
+				970 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 503
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9495
+				}
+				973 = {
+					add_building_construction = {
+						type = bunker
+						level = 3
+						province = 9495
+						instant_build = yes
+						}
+				}
+			}
+			if = {
+				limit = {
+					controls_province = 9867
+				}
+				30 = {
+					add_building_construction = {
+						type = bunker
+						level = 5
+						province = 9867
+						instant_build = yes
+						}
+				}
+			}
+		}
+	}
+		focus = {
+		id = BRI_fortress_brittany
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = BRI_fortress_nantes }
+		prerequisite = { focus = BRI_fortress_brest }
+		x = 1
+		y = 1
+		relative_position_id = BRI_fortress_brest
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_ideas = BRI_fortress_brittany_idea
+			add_stability = 0.2
+			add_war_support = 0.2
+		}
 	}
 }

@@ -2711,3 +2711,9 @@
 
  BRI_breton_nationalism:0 "Breton Nationalism"
  BRI_breton_nationalism_desc:0 "The Breton people are ready to fight and die for the independence of their country."
+ BRI_civilian_labour:0 "Civilian Labour"
+ BRI_civilian_labour_desc:0 "The Civilians are helping the war effort by building forts and factories, though this does breed resentment towards the military council."
+ BRI_used_civilian_labour:0 "Civilian Labour Used"
+ BRI_used_civilian_labour_desc:0 "Civilans have been used for labour and can no longer work for sometime."
+ BRI_fortress_brittany_idea:0 "Fortress Brittany"
+ BRI_fortress_brittany_idea_desc:0 "Brittany's fortresses are now a beacon of national pride."
