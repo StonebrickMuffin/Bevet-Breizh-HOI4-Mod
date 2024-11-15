@@ -1,4 +1,4 @@
-﻿capital = 970
+﻿capital = 982
 
 	set_oob = "BRI_1936"
 

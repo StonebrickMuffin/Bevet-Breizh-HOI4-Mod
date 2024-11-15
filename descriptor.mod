@@ -1,4 +1,4 @@
-version="1.14.x"
+version="1.15.x"
 tags={
 	"Alternative History"
 	"National Focuses"
@@ -6,4 +6,4 @@ tags={
 	"Events"
 }
 name="Bevet Breizh"
-supported_version="1.14.10"
+supported_version="1.15.x"
