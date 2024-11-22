@@ -615,7 +615,7 @@ focus_tree = {
 			}
 		}
 	}
-		focus = {
+	focus = {
 		id = BRI_fortress_brittany
 		icon = GFX_goal_generic_defence
 		prerequisite = { focus = BRI_fortress_nantes }
@@ -632,6 +632,436 @@ focus_tree = {
 			add_ideas = BRI_fortress_brittany_idea
 			add_stability = 0.2
 			add_war_support = 0.2
+		}
+	}
+	focus = {
+		id = BRI_organise_greater_recruitment
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = BRI_military_control }
+		x = 4
+		y = 1
+		relative_position_id = BRI_military_control
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_increased_recruitment
+   				days = 360
+			}
+		BRI_military_council = {
+			swap_country_leader_traits = {
+				remove = BRI_military_control_1
+				add = BRI_military_control_2
+				}
+			}   
+		}
+	}
+	focus = {
+		id = BRI_reorganise_the_military
+		icon =GFX_goal_generic_position_armies
+		x = 5
+		y = 0
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			NOT = {
+				has_country_leader = {
+					character = BRI_disorganised_rebels
+					ruling_only = yes
+				}
+			}
+		}
+		completion_reward = {
+			remove_ideas = BRI_disorganised_military
+		}
+	}
+	focus = {
+		id = BRI_integrate_artillery_batteries
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = BRI_reorganise_the_military }
+		mutually_exclusive = { focus = BRI_mobile_warfare }
+		mutually_exclusive = { focus = BRI_infantry_warfare }
+		x = 2
+		y = 1
+		relative_position_id = BRI_reorganise_the_military
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 50
+			add_ideas = BRI_integrated_artillery
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {
+		id = BRI_modern_artillery
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = BRI_integrate_artillery_batteries }
+		x = 0
+		y = 1
+		relative_position_id = BRI_integrate_artillery_batteries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = artillery
+			}
+			add_tech_bonus = {
+				ahead_reduction = 2
+				uses = 2
+				category = artillery
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {
+		id = BRI_streamline_artillery_production
+		icon = GFX_focus_SWE_let_fly_all_guns
+		prerequisite = { focus = BRI_modern_artillery }
+		x = 0
+		y = 1
+		relative_position_id = BRI_modern_artillery
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 25
+			add_ideas = BRI_optimised_artillery_production
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_superior_firepower
+			}
+		}
+	}
+	focus = {
+		id = BRI_mobile_warfare
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = BRI_reorganise_the_military }
+		mutually_exclusive = { focus = BRI_integrate_artillery_batteries }
+		mutually_exclusive = { focus = BRI_infantry_warfare }
+		x = -2
+		y = 1
+		relative_position_id = BRI_reorganise_the_military
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 50
+			add_ideas = BRI_idea_mobile_warfare_1
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 1
+				category = motorized_equipment
+			}
+			add_tech_bonus = {
+				ahead_reduction = 2
+				uses = 1
+				category = motorized_equipment
+			}
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = armor
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_mobile_warfare
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_armoured_research
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = BRI_mobile_warfare }
+		x = 0
+		y = 1
+		relative_position_id = BRI_mobile_warfare
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				add_idea = BRI_idea_mobile_warfare_2
+				remove_idea = BRI_idea_mobile_warfare_1
+			}	
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 3
+				category = armor
+			}
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = cat_anti_tank
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_breton_wolf
+		icon = GFX_goal_generic_wolf_pack
+		prerequisite = { focus = BRI_armoured_research }
+		x = 0
+		y = 1
+		relative_position_id = BRI_armoured_research
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				ahead_reduction = 2
+				uses = 2
+				category = armor
+			}
+			add_tech_bonus = {
+				bonus = 2.0
+				uses = 1
+				category = cat_anti_tank
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			if = {
+				limit = {
+					has_tech = mechanised_infantry
+				}
+				custom_effect_tooltip = BRI_mech_breton_wolf_unit_tt
+				hidden_effect = {
+					division_template = {
+						name = "Bleiz Breizh"
+							priority = 2
+							template_counter = 56
+							regiments = {
+								medium_armor = { x = 0 y = 0 }
+								medium_armor = { x = 0 y = 1 }
+								medium_armor = { x = 0 y = 2 }
+								medium_armor = { x = 0 y = 3 }
+
+								medium_armor = { x = 1 y = 0 }
+								medium_armor = { x = 1 y = 1 }
+					
+								mechanized = { x = 2 y = 0 }
+								mechanized = { x = 2 y = 1 }
+								mechanized = { x = 2 y = 2 }
+								mechanized = { x = 2 y = 3 }					
+							}
+							support = {
+								artillery = { x = 0 y = 0 }
+							}
+						}
+					}
+				}
+			if = {
+				limit = {
+					NOT = {
+						has_tech = mechanised_infantry
+					}
+				}
+				custom_effect_tooltip = BRI_mot_breton_wolf_unit_tt
+				hidden_effect = {
+					division_template = {
+						name = "Bleiz Breizh"
+							priority = 2
+							template_counter = 56
+							regiments = {
+								medium_armor = { x = 0 y = 0 }
+								medium_armor = { x = 0 y = 1 }
+								medium_armor = { x = 0 y = 2 }
+								medium_armor = { x = 0 y = 3 }
+
+								medium_armor = { x = 1 y = 0 }
+								medium_armor = { x = 1 y = 1 }
+						
+								motorized = { x = 2 y = 0 }
+								motorized = { x = 2 y = 1 }
+								motorized = { x = 2 y = 2 }
+								motorized = { x = 2 y = 3 }					
+							}
+							support = {
+								artillery = { x = 0 y = 0 }
+							}
+						}
+					}
+				}
+			hidden_effect = {
+				random_owned_controlled_state = {
+					limit = { is_controlled_by = BRI }
+					prioritize = { 3552 }
+					create_unit = {
+						division = "name = \"Bleiz Breizh\" division_template = \"Bleiz Breizh\" start_experience_factor = 1.0" 
+						owner = BRI
+					}
+				}
+			}	
+		}
+	}
+
+	focus = {
+		id = BRI_infantry_warfare
+		icon = GFX_focus_generic_manpower
+		prerequisite = { focus = BRI_reorganise_the_military }
+		mutually_exclusive = { focus = BRI_integrate_artillery_batteries }
+		mutually_exclusive = { focus = BRI_mobile_warfare }
+		x = 0
+		y = 1
+		relative_position_id = BRI_reorganise_the_military
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 50
+			add_ideas = BRI_advanced_infantry_warfare_1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = cat_grand_battle_plan
+				category = cat_mass_assault
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_infantry_modernisation
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = BRI_infantry_warfare }
+		x = 0
+		y = 1
+		relative_position_id = BRI_infantry_warfare
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			army_experience = 25
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				ahead_reduction = 2
+				uses = 2
+				category = infantry_weapons
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+				category = cat_mass_assault
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_greater_infantry_deployment
+		icon = GFX_focus_generic_little_entente
+		prerequisite = { focus = BRI_infantry_modernisation }
+		x = 0
+		y = 1
+		relative_position_id = BRI_infantry_modernisation
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			army_experience = 25
+			swap_ideas = {
+				add_idea = BRI_advanced_infantry_warfare_2
+				remove_idea = BRI_advanced_infantry_warfare_1
+			}	
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				ahead_reduction = 2
+				uses = 2
+				category = infantry_weapons
+			}
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+				category = cat_mass_assault
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_lessons_from_war
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = BRI_streamline_artillery_production focus = BRI_breton_wolf focus = BRI_greater_infantry_deployment }
+		x = 0
+		y = 1
+		relative_position_id = BRI_greater_infantry_deployment
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
+		available = {
+			date > 1937.01.01
+		}
+		completion_reward = {
+			army_experience = 50
+			add_ideas = BRI_idea_lessons_from_war
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
 		}
 	}
 }

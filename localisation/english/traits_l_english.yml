@@ -1905,6 +1905,7 @@
  GER_head_of_the_missile_department: "Head of the Missile Department"
  GER_head_of_experimental_weapons: "Head of Experimental Weapons Department"
  
- uncoordinated:0 "Uncoordinated"
- revolutionary_zeal:0 "Revolutionary Zeal"
- military_control:0 "Military Control"
+ BRI_uncoordinated:0 "Uncoordinated"
+ BRI_revolutionary_zeal:0 "Revolutionary Zeal"
+ BRI_military_control_1:0 "Military Control"
+ BRI_military_control_2:0 "Military Control"

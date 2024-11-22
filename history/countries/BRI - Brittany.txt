@@ -266,6 +266,7 @@ set_popularities = {
 
 add_ideas = {
 	BRI_breton_nationalism
+	BRI_disorganised_military
 	tot_economic_mobilisation
 	service_by_requirement
 	limited_exports

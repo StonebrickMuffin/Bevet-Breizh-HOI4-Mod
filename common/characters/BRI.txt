@@ -8,7 +8,7 @@ characters={
 		}
 		country_leader={
 			ideology=Anarchism
-			traits={ uncoordinated revolutionary_zeal}
+			traits={ BRI_uncoordinated BRI_revolutionary_zeal}
 			expire="1965.1.1.1"
 			id=-1
 		}
@@ -23,7 +23,7 @@ characters={
 		}
 		country_leader={
 			ideology=oligarchism 
-			traits={ military_control }
+			traits={ BRI_military_control_1 }
 			expire="1965.1.1.1"
 			id=-1
 		}
