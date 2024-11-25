@@ -281,5 +281,46 @@ ideas = {
 				breakthrough_factor = 0.1
 			}
 		}
+
+		BRI_idea_industrial_supremacy_civ = {
+			
+			allowed = {
+				original_tag = BRI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+            picture = generic_goods_red_bonus
+			
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.2
+			}
+		}
+
+		BRI_idea_industrial_supremacy_mil = {
+			
+			allowed = {
+				original_tag = BRI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+            picture = generic_goods_red_bonus
+			
+			modifier = {
+				consumer_goods_factor = -0.2
+				industrial_capacity_factory = 0.2
+				industrial_capacity_dockyard = 0.2
+			}
+		}
     }
 }

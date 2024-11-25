@@ -148,7 +148,7 @@ focus_tree = {
 		id = BRI_build_costal_defences
 		icon = GFX_focus_generic_coastal_fort
 		prerequisite = { focus = BRI_utilise_civilian_labour }
-		x = -1
+		x = -4
 		y = 1
 		relative_position_id = BRI_utilise_civilian_labour
 		cost = 5
@@ -377,9 +377,9 @@ focus_tree = {
 		id = BRI_frontline_defences
 		icon = GFX_goal_generic_construct_military
 		prerequisite = { focus = BRI_utilise_civilian_labour }
-		x = 1
-		y = 1
-		relative_position_id = BRI_utilise_civilian_labour
+		x = 2
+		y = 0
+		relative_position_id = BRI_build_costal_defences
 		cost = 5
 		ai_will_do = {
 			factor = 1
@@ -1061,6 +1061,309 @@ focus_tree = {
 				cost_reduction = 0.5
 				uses = 2
 				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_construct_new_industries
+		icon = GFX_goal_generic_construct_civilian
+		prerequisite = { focus = BRI_utilise_civilian_labour }
+		x = 2
+		y = 1
+		relative_position_id = BRI_utilise_civilian_labour
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_up_civilian_industries
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = BRI_construct_new_industries }
+		mutually_exclusive = { focus = BRI_build_up_military_industries }
+		x = -1
+		y = 1
+		relative_position_id = BRI_construct_new_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_construct_more_civilian_factories
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = BRI_build_up_civilian_industries }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_up_civilian_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_infrastructure_construction
+		icon = GFX_goal_generic_construction2
+		prerequisite = { focus = BRI_build_up_civilian_industries }
+		x = -2
+		y = 1
+		relative_position_id = BRI_build_up_civilian_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			if = {
+				limit = {
+					14 = { 
+						is_controlled_by = BRI
+						}
+					}
+				14 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					982 = { 
+						is_controlled_by = BRI
+						}
+					}
+				982 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					985 = { 
+						is_controlled_by = BRI
+						}
+					}
+				985 = {
+					add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_up_military_industries
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = BRI_construct_new_industries }
+		mutually_exclusive = { focus = BRI_build_up_civilian_industries }
+		x = 1
+		y = 1
+		relative_position_id = BRI_construct_new_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_military_factory_construction
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = BRI_build_up_military_industries }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_up_military_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_expand_the_brest_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = BRI_build_up_military_industries }
+		x = 2
+		y = 1
+		relative_position_id = BRI_build_up_military_industries
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			controls_state = 14
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_used_civilian_labour
+   				days = 35
+			}
+			14 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_industrial_supremacy
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = BRI_military_factory_construction focus = BRI_construct_more_civilian_factories }
+		x = -1
+		y = 1
+		relative_position_id = BRI_military_factory_construction
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = BRI_build_up_civilian_industries
+				}
+				add_ideas = BRI_idea_industrial_supremacy_civ
+			}
+			if = {
+				limit = {
+					has_completed_focus = BRI_build_up_military_industries
+				}
+				add_ideas = BRI_idea_industrial_supremacy_mil
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_build_up_civilian_industries
+						has_completed_focus = BRI_build_up_military_industries
+					}
+				}
+				custom_effect_tooltip = BRI_industrial_supremacy_tt
 			}
 		}
 	}
