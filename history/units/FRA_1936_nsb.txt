@@ -372,6 +372,7 @@ units = {
 		division_template = "Division d'Infanterie" 	# Second line, reserve equipment
 		start_experience_factor = 0.5
 		start_equipment_factor = 0.2
+		start_manpower_factor = 0.2
 
 	}
 	division= {	
@@ -380,6 +381,7 @@ units = {
 		division_template = "Brigade de Chars de Combat" 		# R-35s
 		start_experience_factor = 0.25
 		start_equipment_factor = 0.8
+		start_manpower_factor = 0.8
 		force_equipment_variants = { light_tank_chassis_1 = { owner = "FRA" version_name = "H-35"} }
 	}
 

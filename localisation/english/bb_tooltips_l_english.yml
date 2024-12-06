@@ -2,3 +2,4 @@
  BRI_mech_breton_wolf_unit_tt:0 "\nGain a unit with 6 battalions of §YMedium Tanks§! and 4 battalions of §YMechanised Infantry§!\n"
  BRI_mot_breton_wolf_unit_tt:0 "\nGain a unit with 6 battalions of §YMedium Tanks§! and 4 battalions of §YMotorised Infantry§!\n"
  BRI_industrial_supremacy_tt:0 "\nAdd §YIndustrial Supremacy§! which grants (Consumer Goods Factories factor: §Y-20.0%§!, and Construction Speed: §G+20.00%§! or Factory Output: §G+20.00%§! and Dockyard Output: §G+20.00%§!)\n"
+ BRI_complete_the_factory_complex_tt:0 "Factory Output: §G+20.00%§!\nDockyard Output: §G+20.00%§!\n"

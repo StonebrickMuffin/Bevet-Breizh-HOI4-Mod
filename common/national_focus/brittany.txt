@@ -16,7 +16,7 @@ focus_tree = {
     focus = {
 		id = BRI_military_control
 		icon = GFX_goal_generic_political_pressure
-		x = -6
+		x = -10
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -32,11 +32,13 @@ focus_tree = {
             }	
 		}		
 	}
+
 	focus = {
 		id = BRI_utilise_civilian_labour
 		icon = GFX_goal_generic_construction2
 		prerequisite = { focus = BRI_military_control }
-		x = -4
+		mutually_exclusive = { focus = BRI_encourage_factory_workers }
+		x = -13
 		y = 1
 		relative_position_id = BRI_military_control
 		cost = 5
@@ -638,7 +640,7 @@ focus_tree = {
 		id = BRI_organise_greater_recruitment
 		icon = GFX_goal_generic_military_sphere
 		prerequisite = { focus = BRI_military_control }
-		x = 4
+		x = 8
 		y = 1
 		relative_position_id = BRI_military_control
 		cost = 5
@@ -1364,6 +1366,753 @@ focus_tree = {
 					}
 				}
 				custom_effect_tooltip = BRI_industrial_supremacy_tt
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_encourage_factory_workers
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = BRI_military_control }
+		mutually_exclusive = { focus = BRI_utilise_civilian_labour }
+		x = 0
+		y = 1
+		relative_position_id = BRI_military_control
+		cost = 5
+		ai_will_do = {
+			factor = 2
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = BRI_more_factory_workers
+		}
+	}
+
+	focus = {
+		id = BRI_factory_worker_specialisation
+		icon = GFX_focus_generic_full_employment
+		prerequisite = { focus = BRI_encourage_factory_workers }
+		mutually_exclusive = { focus = BRI_recruit_workers_from_the_military }
+		x = -5
+		y = 1
+		relative_position_id = BRI_encourage_factory_workers
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_more_factory_workers_eff_1
+				remove_idea = BRI_more_factory_workers
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_optimise_production_lines
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = BRI_factory_worker_specialisation }
+		x = -1
+		y = 1
+		relative_position_id = BRI_factory_worker_specialisation
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_specialise_arms_production
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_2
+					remove_idea = BRI_more_factory_workers_eff_1
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_specialise_dockyard_workers
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_2_prod
+					remove_idea = BRI_more_factory_workers_eff_prod
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_specialise_dockyard_workers
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_2_prod_2
+					remove_idea = BRI_more_factory_workers_eff_prod_2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_standardise_parts
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = BRI_optimise_production_lines }
+		x = 0
+		y = 1
+		relative_position_id = BRI_optimise_production_lines
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_specialise_arms_production
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_3
+					remove_idea = BRI_more_factory_workers_eff_2
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_specialise_dockyard_workers
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_3_prod
+					remove_idea = BRI_more_factory_workers_eff_2_prod
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_specialise_dockyard_workers
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_3_prod_2
+					remove_idea = BRI_more_factory_workers_eff_2_prod_2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_specialise_arms_production
+		icon = GFX_focus_generic_reorient_production
+		prerequisite = { focus = BRI_factory_worker_specialisation }
+		x = 1
+		y = 1
+		relative_position_id = BRI_factory_worker_specialisation
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_optimise_production_lines
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_prod
+					remove_idea = BRI_more_factory_workers_eff_1
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_standardise_parts
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_2_prod
+					remove_idea = BRI_more_factory_workers_eff_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_standardise_parts
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_3_prod
+					remove_idea = BRI_more_factory_workers_eff_3
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_specialise_dockyard_workers
+		icon = GFX_goal_generic_build_navy
+		prerequisite = { focus = BRI_specialise_arms_production }
+		x = 0
+		y = 1
+		relative_position_id = BRI_specialise_arms_production
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_optimise_production_lines
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_prod_2
+					remove_idea = BRI_more_factory_workers_eff_prod
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_standardise_parts
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_2_prod_2
+					remove_idea = BRI_more_factory_workers_eff_2_prod
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_standardise_parts
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_eff_3_prod_2
+					remove_idea = BRI_more_factory_workers_eff_3_prod
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_expert_factory_workers
+		icon = GFX_focus_generic_military_industry
+		prerequisite = { focus = BRI_specialise_dockyard_workers }
+		prerequisite = { focus = BRI_standardise_parts }
+		x = -1
+		y = 1
+		relative_position_id = BRI_specialise_dockyard_workers
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_idea_expert_factory_workers
+				remove_idea = BRI_more_factory_workers_eff_3_prod_2
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_recruit_workers_from_the_military
+		icon = GFX_focus_generic_limited_social_mobilization
+		prerequisite = { focus = BRI_encourage_factory_workers }
+		mutually_exclusive = { focus = BRI_factory_worker_specialisation }
+		x = 5
+		y = 1
+		relative_position_id = BRI_encourage_factory_workers
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_more_factory_workers_mil
+				remove_idea = BRI_more_factory_workers
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_increase_production
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = BRI_recruit_workers_from_the_military }
+		x = -1
+		y = 1
+		relative_position_id = BRI_recruit_workers_from_the_military
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_utilise_recycled_metals
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_2
+					remove_idea = BRI_more_factory_workers_mil
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_replaceable_parts
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_2_rec
+					remove_idea = BRI_more_factory_workers_mil_rec
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_replaceable_parts
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_2_rec_2
+					remove_idea = BRI_more_factory_workers_mil_rec_2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_cheapen_goods_for_workers
+		icon = GFX_focus_mex_privatisation
+		prerequisite = { focus = BRI_increase_production }
+		x = 0
+		y = 1
+		relative_position_id = BRI_increase_production
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_utilise_recycled_metals
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_3
+					remove_idea = BRI_more_factory_workers_mil_2
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_replaceable_parts
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_3_rec
+					remove_idea = BRI_more_factory_workers_mil_2_rec
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_replaceable_parts
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_3_rec_2
+					remove_idea = BRI_more_factory_workers_mil_2_rec_2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_utilise_recycled_metals
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = BRI_recruit_workers_from_the_military }
+		x = 1
+		y = 1
+		relative_position_id = BRI_recruit_workers_from_the_military
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_increase_production
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_rec
+					remove_idea = BRI_more_factory_workers_mil
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_cheapen_goods_for_workers
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_2_rec
+					remove_idea = BRI_more_factory_workers_mil_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_cheapen_goods_for_workers
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_3_rec
+					remove_idea = BRI_more_factory_workers_mil_3
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_replaceable_parts
+		icon = GFX_goal_generic_production2
+		prerequisite = { focus = BRI_utilise_recycled_metals }
+		x = 0
+		y = 1
+		relative_position_id = BRI_utilise_recycled_metals
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_increase_production
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_rec_2
+					remove_idea = BRI_more_factory_workers_mil_rec
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_completed_focus = BRI_cheapen_goods_for_workers
+					}
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_2_rec_2
+					remove_idea = BRI_more_factory_workers_mil_2_rec
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_cheapen_goods_for_workers
+				}
+				swap_ideas = {
+					add_idea = BRI_more_factory_workers_mil_3_rec_2
+					remove_idea = BRI_more_factory_workers_mil_3_rec
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_all_for_the_war_effort
+		icon = GFX_focus_GER_autarky_achieved
+		prerequisite = { focus = BRI_replaceable_parts }
+		prerequisite = { focus = BRI_cheapen_goods_for_workers }
+		x = 1
+		y = 1
+		relative_position_id = BRI_cheapen_goods_for_workers
+		cost = 5
+		ai_will_do = {
+			factor = 3
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_idea_all_for_the_war_effort
+				remove_idea = BRI_more_factory_workers_mil_3_rec_2
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_construct_a_new_arms_factory
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = BRI_encourage_factory_workers }
+		prerequisite = { focus = BRI_factory_worker_specialisation  focus = BRI_recruit_workers_from_the_military }
+		x = 0
+		y = 2
+		relative_position_id = BRI_encourage_factory_workers
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_an_artillery_factory
+		icon = GFX_goal_generic_army_artillery2
+		prerequisite = { focus = BRI_construct_a_new_arms_factory }
+		mutually_exclusive = { focus = BRI_build_a_tank_factory }
+		mutually_exclusive = { focus = BRI_build_an_infantry_weapons_factory }
+		x = -2
+		y = 1
+		relative_position_id = BRI_construct_a_new_arms_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = BRI_specialised_artillery_factory
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_up_an_artillery_factory_complex
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = BRI_build_an_artillery_factory }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_an_artillery_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_specialised_artillery_factory_2
+				remove_idea = BRI_specialised_artillery_factory
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_a_tank_factory
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = BRI_construct_a_new_arms_factory }
+		mutually_exclusive = { focus = BRI_build_an_artillery_factory }
+		mutually_exclusive = { focus = BRI_build_an_infantry_weapons_factory }
+		x = 0
+		y = 1
+		relative_position_id = BRI_construct_a_new_arms_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = BRI_specialised_armour_factory
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_up_a_tank_factory_complex
+		icon = GFX_focus_generic_mass_production
+		prerequisite = { focus = BRI_build_a_tank_factory }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_a_tank_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_specialised_armour_factory_2
+				remove_idea = BRI_specialised_armour_factory
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_an_infantry_weapons_factory
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = BRI_construct_a_new_arms_factory }
+		mutually_exclusive = { focus = BRI_build_an_artillery_factory }
+		mutually_exclusive = { focus = BRI_build_a_tank_factory }
+		x = 2
+		y = 1
+		relative_position_id = BRI_construct_a_new_arms_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = BRI_specialised_infantry_equipment_factory
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_build_up_an_infantry_weapons_factory_complex
+		icon = GFX_focus_generic_reorient_production
+		prerequisite = { focus = BRI_build_an_infantry_weapons_factory }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_an_infantry_weapons_factory
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			swap_ideas = {
+				add_idea = BRI_specialised_infantry_equipment_factory_2
+				remove_idea = BRI_specialised_infantry_equipment_factory
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = BRI_complete_the_factory_complex
+		icon = GFX_focus_generic_combined_arms
+		prerequisite = { focus = BRI_build_up_an_artillery_factory_complex  focus = BRI_build_up_a_tank_factory_complex  focus = BRI_build_up_an_infantry_weapons_factory_complex }
+		prerequisite = { focus = BRI_expert_factory_workers  focus = BRI_all_for_the_war_effort }
+		x = 0
+		y = 1
+		relative_position_id = BRI_build_up_a_tank_factory_complex
+		cost = 5
+		ai_will_do = {
+			factor = 4
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = BRI_build_an_artillery_factory
+				}
+				swap_ideas = {
+					add_idea = BRI_specialised_artillery_factory_3
+					remove_idea = BRI_specialised_artillery_factory_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_build_a_tank_factory
+				}
+				swap_ideas = {
+					add_idea = BRI_specialised_armour_factory_3
+					remove_idea = BRI_specialised_armour_factory_2
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = BRI_build_an_infantry_weapons_factory
+				}
+				swap_ideas = {
+					add_idea = BRI_specialised_infantry_equipment_factory_3
+					remove_idea = BRI_specialised_infantry_equipment_factory_2
+				}
+			}
+			else = {
+				custom_effect_tooltip = BRI_complete_the_factory_complex_tt
+			}
+			random_state = {
+				limit = {
+					is_controlled_by = BRI
+					is_core_of = BRI
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 	}
