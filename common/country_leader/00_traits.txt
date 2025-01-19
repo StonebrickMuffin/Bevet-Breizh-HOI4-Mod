@@ -13964,7 +13964,7 @@ leader_traits = {
 		random = no
 		political_power_factor = -0.5
 		stability_weekly_factor = -0.01
-		command_power_gain = -0.4
+		max_command_power_mult = -1
 
 		ai_will_do = {
 			factor = -10

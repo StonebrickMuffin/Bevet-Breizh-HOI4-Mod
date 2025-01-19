@@ -47,11 +47,103 @@ characters={
 				ai_will_do  = {
 					factor  = 0.000
 				}
+			}
 		}
-# TODO[ PORTRAIT LARGE ]: Missing large portrait please check!
+	BRI_louis_feutren={
+		name=BRI_louis_feutren
+# TODO add portrait
 		portraits={
 			army={
 				small="GFX_idea_generic_political_advisor_asia_2"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRI_louis_feutren
+			allowed  = {
+					original_tag  = BRI
+				}
+				available = {
+					has_completed_focus = BRI_promote_an_defensive_commander_in_chief
+				}
+				traits  = {
+					army_chief_defensive_2
+				}
+				cost = 100
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		corps_commander={
+			traits={ militias_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=2
+			planning_skill=1
+			logistics_skill=1
+			legacy_id=0
+			visible = {
+				has_completed_focus = BRI_promote_nationalist_generals
+			}
+		}
+		
+	}
+	BRI_theophile_jeusset={ ###Jean-Yves Keraudren is his psudonym
+		name=BRI_theophile_jeusset
+# TODO add portrait
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_asia_2"
+			}
+		}
+		corps_commander={
+			traits={ }
+			skill=1
+			attack_skill=1
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=0
+			visible = {
+				has_completed_focus = BRI_promote_nationalist_generals
+			}
+		}
+	}
+	BRI_celestin_laine={
+		name=BRI_celestin_laine
+# TODO add portrait
+		portraits={
+			army={
+				small="GFX_idea_generic_political_advisor_asia_2"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = BRI_celestin_laine
+			allowed  = {
+					original_tag  = BRI
+				}
+				available = {
+					has_completed_focus = BRI_promote_an_aggressive_commander_in_chief
+				}
+				traits  = {
+					army_chief_offensive_2
+				}
+				cost = 100
+				ai_will_do  = {
+					factor  = 1.000
+				}
+		}
+		field_marshal={
+			traits={ trait_reckless militias_officer }
+			skill=2
+			attack_skill=2
+			defense_skill=1
+			planning_skill=2
+			logistics_skill=1
+			legacy_id=0
+			visible = {
+				has_completed_focus = BRI_promote_nationalist_generals
 			}
 		}
 	}
@@ -177,48 +269,6 @@ characters={
 		portraits={
 			army={
 				small="GFX_idea_generic_air_asia_2"
-			}
-		}
-	}
-	BRI_aco2={
-		advisor={
-			slot = army_chief
-			idea_token = BRI_aco2
-			allowed  = {
-					original_tag  = BRI
-				}
-				traits  = {
-					army_chief_organizational_2 
-				}
-				ai_will_do  = {
-					factor  = 1.000
-				}
-		}
-# TODO[ PORTRAIT LARGE ]: Missing large portrait please check!
-		portraits={
-			army={
-				small="GFX_idea_generic_army_asia_4"
-			}
-		}
-	}
-	BRI_acd2={
-		advisor={
-			slot = army_chief
-			idea_token = BRI_acd2
-			allowed  = {
-					original_tag  = BRI
-				}
-				traits  = {
-					army_chief_defensive_2 
-				}
-				ai_will_do  = {
-					factor  = 1.000
-				}
-		}
-# TODO[ PORTRAIT LARGE ]: Missing large portrait please check!
-		portraits={
-			army={
-				small="GFX_idea_generic_army_asia_1"
 			}
 		}
 	}

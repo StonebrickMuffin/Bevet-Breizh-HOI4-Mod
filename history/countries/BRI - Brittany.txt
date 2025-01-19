@@ -125,8 +125,10 @@ set_convoys = 50
 set_stability = 0.5
 set_war_support = 0.9
 
+###country leaders
 recruit_character = BRI_disorganised_rebels
 recruit_character = BRI_military_council
+
 recruit_character = BRI_fascist_guy
 recruit_character = BRI_coi
 recruit_character = BRI_acr
@@ -134,8 +136,6 @@ recruit_character = BRI_nccr
 recruit_character = BRI_ai2
 recruit_character = BRI_ncm
 recruit_character = BRI_acas
-recruit_character = BRI_aco2
-recruit_character = BRI_acd2
 recruit_character = BRI_pot
 recruit_character = BRI_stc
 recruit_character = BRI_aa2
@@ -147,7 +147,11 @@ recruit_character = BRI_democratic_guy
 recruit_character = BRI_mt
 recruit_character = BRI_ncs
 recruit_character = BRI_awt
-
+###generals
+recruit_character = BRI_theophile_jeusset
+recruit_character = BRI_louis_feutren
+###field marshals
+recruit_character = BRI_celestin_laine
 
 1939.1.1 = {
 	#generic focuses

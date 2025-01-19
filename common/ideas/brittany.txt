@@ -1037,5 +1037,24 @@ ideas = {
 				industrial_capacity_dockyard = 0.2
 			}
 		}
+
+		BRI_promoting_talented_officers = {
+			
+			allowed = {
+				original_tag = BRI
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+            picture = generic_manpower_bonus
+
+			modifier = {
+				army_leader_start_level = 2
+			}
+		}
     }
 }

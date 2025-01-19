@@ -16,7 +16,7 @@ focus_tree = {
     focus = {
 		id = BRI_military_control
 		icon = GFX_goal_generic_political_pressure
-		x = -10
+		x = -16
 		y = 0
 		cost = 10
 		ai_will_do = {
@@ -634,31 +634,6 @@ focus_tree = {
 			add_ideas = BRI_fortress_brittany_idea
 			add_stability = 0.2
 			add_war_support = 0.2
-		}
-	}
-	focus = {
-		id = BRI_organise_greater_recruitment
-		icon = GFX_goal_generic_military_sphere
-		prerequisite = { focus = BRI_military_control }
-		x = 8
-		y = 1
-		relative_position_id = BRI_military_control
-		cost = 5
-		ai_will_do = {
-			factor = 1
-		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
-		completion_reward = {
-			add_timed_idea = {
-    			idea = BRI_increased_recruitment
-   				days = 360
-			}
-		BRI_military_council = {
-			swap_country_leader_traits = {
-				remove = BRI_military_control_1
-				add = BRI_military_control_2
-				}
-			}   
 		}
 	}
 	focus = {
@@ -2114,6 +2089,103 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
+		}
+	}
+	focus = {
+		id = BRI_organise_greater_recruitment
+		icon = GFX_goal_generic_military_sphere
+		prerequisite = { focus = BRI_military_control }
+		x = 14
+		y = 1
+		relative_position_id = BRI_military_control
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_timed_idea = {
+    			idea = BRI_increased_recruitment
+   				days = 360
+			}
+		BRI_military_council = {
+			swap_country_leader_traits = {
+				remove = BRI_military_control_1
+				add = BRI_military_control_2
+				}
+			}   
+		}
+	}
+	focus = {
+		id = BRI_promote_nationalist_generals
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = BRI_organise_greater_recruitment }
+		x = -4
+		y = 1
+		relative_position_id = BRI_organise_greater_recruitment
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			show_unit_leaders_tooltip = BRI_celestin_laine
+			show_unit_leaders_tooltip = BRI_theophile_jeusset
+			show_unit_leaders_tooltip = BRI_louis_feutren
+		}
+	}
+	focus = {
+		id = BRI_promote_an_aggressive_commander_in_chief
+		icon = GFX_goal_generic_major_war
+		prerequisite = { focus = BRI_promote_nationalist_generals }
+		mutually_exclusive = { focus = BRI_promote_an_defensive_commander_in_chief }
+		x = -1
+		y = 1
+		relative_position_id = BRI_promote_nationalist_generals
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = BRI_add_chief_of_army_tt
+			show_ideas_tooltip = BRI_celestin_laine
+			hidden_effect = {
+				add_ideas = BRI_celestin_laine
+			}
+		}
+	}
+	focus = {
+		id = BRI_promote_an_defensive_commander_in_chief
+		icon = GFX_goal_generic_defence
+		prerequisite = { focus = BRI_promote_nationalist_generals }
+		mutually_exclusive = { focus = BRI_promote_an_aggressive_commander_in_chief }
+		x = 1
+		y = 1
+		relative_position_id = BRI_promote_nationalist_generals
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = BRI_add_chief_of_army_tt
+			show_ideas_tooltip = BRI_louis_feutren
+			hidden_effect = {
+				add_ideas = BRI_louis_feutren
+			}
+		}
+	}
+	focus = {
+		id = BRI_promote_talented_officers
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = BRI_promote_an_defensive_commander_in_chief  focus = BRI_promote_an_aggressive_commander_in_chief }
+		x = -1
+		y = 1
+		relative_position_id = BRI_promote_an_defensive_commander_in_chief
+		cost = 5
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = BRI_promoting_talented_officers
 		}
 	}
 }

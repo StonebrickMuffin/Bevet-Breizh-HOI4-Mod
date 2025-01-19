@@ -2844,3 +2844,5 @@
  BRI_specialised_infantry_equipment_factory_2_desc:0 "We have a specialised infantry equipment factory which helps us produce artillery cheaper."
  BRI_specialised_infantry_equipment_factory_3:0 "Specialised Infantry Equipment Factory"
  BRI_specialised_infantry_equipment_factory_3_desc:0 "We have a specialised infantry equipment factory which helps us produce artillery cheaper."
+ BRI_promoting_talented_officers:0 "Promoting Talented Officers"
+ BRI_promoting_talented_officers_desc:0 "The officers being promoted to generals are the most talented we can find."
